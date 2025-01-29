@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Form</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #111;
+      color: #ccc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding: 20px;
+      overflow: hidden;
+    }
+
+    .contact-form {
+      background: #222;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 480px;
+      padding: 30px 40px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+      overflow-y: auto;
+      max-height: 90vh;
+    }
+
+    .contact-form h2 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #fff;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      font-size: 14px;
+      color: #aaa;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      background: #333;
+      border: 1px solid #444;
+      border-radius: 8px;
+      padding: 12px;
+      color: #ccc;
+      font-size: 14px;
+      transition: border-color 0.3s ease, transform 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: #4a90e2;
+      transform: translateX(5px);
+    }
+
+    .form-group .error {
+      color: #e74c3c;
+      font-size: 12px;
+      margin-top: 6px;
+    }
+
+    button {
+      width: 100%;
+      background: #4a90e2;
+      border: none;
+      border-radius: 8px;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+
+    button:hover {
+      background: #357abd;
+      transform: translateY(-3px);
+    }
+
+    .back-button {
+      display: block;
+      margin-top: 20px;
+      padding: 10px 20px;
+      text-align: center;
+      font-size: 16px;
+      color: #fff;
+      background-color: #4a90e2;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+    }
+
+    .back-button:hover {
+      background-color: #357abd;
+    }
+
+    /* Scrollbar Styling */
+    .contact-form::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .contact-form::-webkit-scrollbar-thumb {
+      background-color: #444;
+      border-radius: 4px;
+    }
+
+    /* Animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .contact-form {
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 600px) {
+      .contact-form {
+        padding: 20px;
+      }
+
+      .contact-form h2 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <form class="contact-form" id="contactForm">
+    <h2>Contact Me</h2>
+    
+    <!-- Name -->
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" id="name" placeholder="Your name" required>
+      <div class="error" id="nameError"></div>
+    </div>
+
+    <!-- Email -->
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Your email" required>
+      <div class="error" id="emailError"></div>
+    </div>
+
+    <!-- Phone (Optional) -->
+    <div class="form-group">
+      <label for="phone">Phone (Optional)</label>
+      <input type="text" id="phone" placeholder="Your phone number (Optional)">
+      <div class="error" id="phoneError"></div>
+    </div>
+
+    <!-- Project Type -->
+    <div class="form-group">
+      <label for="projectType">Project Type</label>
+      <select id="projectType">
+        <option value="Website Design">Website Design</option>
+        <option value="Landing Page">Landing Page</option>
+        <option value="E-commerce">E-commerce</option>
+        <option value="Portfolio">Portfolio</option>
+        <option value="UI/UX Design">UI/UX Design</option>
+        <option value="Web Application">Web Application</option>
+      </select>
+    </div>
+
+    <!-- Project Budget -->
+    <div class="form-group">
+      <label for="projectBudget">Project Budget</label>
+      <select id="projectBudget">
+        <option value="< $500">Less than $500</option>
+        <option value="$500 - $1000">$500 - $1000</option>
+        <option value="$1000 - $5000">$1000 - $5000</option>
+        <option value="$5000+">Over $5000</option>
+      </select>
+    </div>
+
+    <!-- Deadline -->
+    <div class="form-group">
+      <label for="deadline">Deadline</label>
+      <input type="date" id="deadline">
+    </div>
+
+    <!-- Project Description -->
+    <div class="form-group">
+      <label for="projectDescription">Project Description</label>
+      <textarea id="projectDescription" rows="5" placeholder="Describe your project goals, ideas, and specific requirements..." required></textarea>
+      <div class="error" id="descriptionError"></div>
+    </div>
+
+    <!-- File Upload -->
+    <div class="form-group">
+      <label for="fileUpload">Upload Your Files</label>
+      <input type="file" id="fileUpload">
+    </div>
+
+    <!-- Referral Source -->
+    <div class="form-group">
+      <label for="referralSource">How Did You Find Me?</label>
+      <select id="referralSource">
+        <option value="Google Search">Google Search</option>
+        <option value="Social Media">Social Media</option>
+        <option value="Word of Mouth">Word of Mouth</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit">Send Message</button>
+    <a href="javascript:history.back()" class="back-button">Back</a>
+  </form>
+
+  <script>
+    document.querySelector("#contactForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      let valid = true;
+
+      // Clear previous errors
+      document.querySelector("#nameError").textContent = "";
+      document.querySelector("#emailError").textContent = "";
+      document.querySelector("#phoneError").textContent = "";
+      document.querySelector("#descriptionError").textContent = "";
+
+      // Validate Name
+      const name = document.querySelector("#name").value.trim();
+      if (!name) {
+        valid = false;
+        document.querySelector("#nameError").textContent = "Name is required.";
+      }
+
+      // Validate Email
+      const email = document.querySelector("#email").value.trim();
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!email) {
+        valid = false;
+        document.querySelector("#emailError").textContent = "Email is required.";
+      } else if (!emailPattern.test(email)) {
+        valid = false;
+        document.querySelector("#emailError").textContent = "Please enter a valid email.";
+      }
+
+      // Validate Project Description
+      const description = document.querySelector("#projectDescription").value.trim();
+      if (!description) {
+        valid = false;
+        document.querySelector("#descriptionError").textContent = "Project description is required.";
+      }
+
+      if (valid) {
+        alert("Thank you for your message!");
+        document.querySelector("#contactForm").reset();
+      }
+    });
+  </script>
+
+</body>
+</html>
